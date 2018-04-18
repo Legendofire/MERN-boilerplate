@@ -1,31 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  hashHistory
-} from 'react-router-dom'
+import store from './store';
+import App from './modules/App';
 
-import App from './components/App/App';
-import NotFound from './components/App/NotFound';
-
-import Home from './components/Home/Home';
-
-import HelloWorld from './components/HelloWorld/HelloWorld';
-
-import './styles/styles.scss';
-
-render((
-  <Router>
-    <App>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/helloworld" component={HelloWorld}/>
-        <Route component={NotFound}/>
-      </Switch>
-    </App>
-  </Router>
-), document.getElementById('app'));
+render(
+    (
+        <Provider store={store}>
+            <App>
+                <h1>Hi</h1>
+            </App>
+        </Provider>
+    ), document.getElementById('app')
+);
